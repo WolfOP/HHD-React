@@ -252,7 +252,7 @@ export default function Unit3PracticeQuestionsComponent() {
 
       {/* Questions List */}
       <div className="space-y-6">
-        {filteredQuestions.map((q, index) => (
+        {filteredQuestions.map((q) => (
           <div key={q.id} className="bg-slate-700 p-6 rounded-lg shadow-md">
             <div className="flex flex-wrap items-center gap-4 mb-3">
               <span className="bg-purple-600 text-white px-3 py-1 rounded-full text-sm font-semibold">

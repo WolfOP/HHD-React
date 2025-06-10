@@ -9,13 +9,19 @@ function getInitialConnections() {
 
 // Persistent storage helpers
 function saveToStorage(key, value) {
-  try { localStorage.setItem(key, JSON.stringify(value)); } catch {}
+  try {
+    localStorage.setItem(key, JSON.stringify(value));
+  } catch {
+    // ignore storage errors
+  }
 }
 function loadFromStorage(key, fallback) {
   try {
     const v = localStorage.getItem(key);
     return v ? JSON.parse(v) : fallback;
-  } catch { return fallback; }
+  } catch {
+    return fallback;
+  }
 }
 
 export default function InteractiveMappingComponent() {
