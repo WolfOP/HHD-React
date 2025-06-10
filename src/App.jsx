@@ -2,19 +2,19 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
 
-import Home from './pages/HomeComponent';
-import Unit3 from './pages/Unit3Component';
-import Unit4 from './pages/Unit4Component';
-import AssessmentPrep from './pages/AssessmentPrepComponent';
-import Glossary from './pages/GlossaryComponent';
-import Unit3SAC2Prep from './components/Unit3SAC2PrepComponent';
-import Unit3Quiz from './pages/Unit3QuizComponent';
-import Unit3Flashcards from './pages/Unit3FlashcardsComponent';
-import Unit3PracticeQuestions from './pages/Unit3PracticeQuestionsComponent';
-import KeySkillsHub from './pages/key-skills-hub';
-import NotFound from './pages/NotFoundComponent';
+import Home from './pages/HomeComponent.jsx';
+import Unit3 from './pages/Unit3Component.jsx';
+import Unit4 from './pages/Unit4Component.jsx';
+import AssessmentPrep from './pages/AssessmentPrepComponent.jsx';
+import Glossary from './pages/GlossaryComponent.jsx';
+import Unit3SAC2Prep from './components/Unit3SAC2PrepComponent.jsx';
+import Unit3Quiz from './pages/Unit3QuizComponent.jsx';
+import Unit3Flashcards from './pages/Unit3FlashcardsComponent.jsx';
+import Unit3PracticeQuestions from './pages/Unit3PracticeQuestionsComponent.jsx';
+import KeySkillsHub from './pages/key-skills-hub.jsx';
+import NotFound from './pages/NotFoundComponent.jsx';
 
-import './style.css';
+import './App.css';
 
 function ScrollToTopButton() {
   const [visible, setVisible] = useState(false);
