@@ -75,6 +75,14 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    background-color: #ffffff;
+    color: #1e293b;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dark body {
+    background-color: #0f172a;
+    color: #cbd5e1;
 }
 
 /* Custom scrollbar for a more modern feel (optional) */
