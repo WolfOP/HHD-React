@@ -1,11 +1,14 @@
 import React from "react";
+import { Container, Title, Text, Button } from "@mantine/core";
 
 export default function NotFoundComponent() {
   return (
-    <section className="content-section text-center">
-      <h1 className="text-4xl font-bold mb-4">404 - Page Not Found</h1>
-      <p className="mb-8">Sorry, the page you are looking for does not exist.</p>
-      <a href="#home" className="button-style">Go Home</a>
-    </section>
+    <Container className="content-section text-center">
+      <Title order={2} mb="md">404 - Page Not Found</Title>
+      <Text mb="lg">Sorry, the page you are looking for does not exist.</Text>
+      <Button component="a" href="#home" color="grape">
+        Go Home
+      </Button>
+    </Container>
   );
 }

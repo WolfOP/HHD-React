@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Button, Group } from "@mantine/core";
 
 const flashcards = [
   { term: 'Health and Wellbeing', definition: "The overall state of a person's physical, social, emotional, mental and spiritual existence." },
@@ -35,16 +36,14 @@ export default function FlashcardsComponent() {
     <div className="p-4 bg-slate-800 rounded-lg shadow-md">
       <h2 className="text-xl font-semibold mb-4 text-purple-300">Unit 3 Glossary Flashcards</h2>
       <div className="text-2xl font-bold mb-2">{card.term}</div>
-      {showDef && (
-        <div className="mb-4">{card.definition}</div>
-      )}
-      <button className="button-style mb-4" onClick={handleToggle}>
+      {showDef && <div className="mb-4">{card.definition}</div>}
+      <Button className="mb-4" onClick={handleToggle} color="grape">
         {showDef ? 'Hide Definition' : 'Show Definition'}
-      </button>
-      <div className="space-x-4">
-        <button className="button-style" onClick={handlePrev}>Previous</button>
-        <button className="button-style" onClick={handleNext}>Next</button>
-      </div>
+      </Button>
+      <Group position="center" spacing="sm">
+        <Button variant="outline" color="grape" onClick={handlePrev}>Previous</Button>
+        <Button variant="outline" color="grape" onClick={handleNext}>Next</Button>
+      </Group>
     </div>
   );
 }

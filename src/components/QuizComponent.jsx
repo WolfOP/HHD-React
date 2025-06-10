@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Button } from "@mantine/core";
 
 const quizQuestions = [
   {
@@ -94,7 +95,9 @@ export default function QuizComponent() {
             ))}
           </div>
         ))}
-        <button type="submit" className="button-style mt-4">Submit Answers</button>
+        <Button type="submit" className="mt-4" color="grape">
+          Submit Answers
+        </Button>
       </form>
       <div className="mt-4 text-lg font-semibold">
         {score !== null && `You scored ${score}/${quizQuestions.length}!`}
