@@ -1,4 +1,5 @@
 import React from "react";
+import { Button } from "@mantine/core";
 
 export default function AssessmentPrepComponent() {
   return (
@@ -48,13 +49,18 @@ export default function AssessmentPrepComponent() {
         <p className="text-slate-300 mb-3">
           Access interactive tools for deconstructing questions, annotating stimuli, mapping relationships, and planning your extended responses for the Unit 3 Outcome 2 SAC.
         </p>
-        <a href="#unit3-sac2-prep" className="button-style">Go to Unit 3 SAC 2 Prep</a>
-        <a
+        <Button component="a" href="#unit3-sac2-prep" color="grape" className="mb-2">
+          Go to Unit 3 SAC 2 Prep
+        </Button>
+        <Button
+          component="a"
           href="#keyskillshub"
-          className="mt-4 inline-block px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white font-semibold rounded-xl shadow-md transition"
+          mt="sm"
+          color="grape"
+          leftSection="🛠️"
         >
-          🛠️ Go to Key Skills Hub
-        </a>
+          Go to Key Skills Hub
+        </Button>
       </div>
 
       <h4>Suitable SAC Tasks for Unit 3:</h4>
