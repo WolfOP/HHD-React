@@ -75,6 +75,14 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    background-color: #ffffff;
+    color: #1e293b;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dark body {
+    background-color: #1e1e2f;
+    color: #cbd5e1;
 }
 
 /* Custom scrollbar for a more modern feel (optional) */
@@ -95,12 +103,12 @@ body {
 
 /* Style for the active navigation link (desktop and mobile) */
 .nav-link.active {
-    color: #a78bfa !important; /* purple-400 */
+    color: #8b5cf6 !important; /* purple-500 */
     font-weight: 600 !important; /* semibold */
 }
 ul:not(.flex-col) > li > .nav-link.active {
-    background-color: rgba(167, 139, 250, 0.1); /* purple-400 with low opacity */
-    border-bottom: 2px solid #a78bfa; /* purple-400 */
+    background-color: rgba(139, 92, 246, 0.1); /* purple-500 with low opacity */
+    border-bottom: 2px solid #8b5cf6; /* purple-500 */
 }
 #mobile-menu .nav-link.active {
     background-color: #334155; /* slate-700, a bit darker for contrast in mobile menu */
@@ -109,10 +117,10 @@ ul:not(.flex-col) > li > .nav-link.active {
 /* Styling for content sections that will be loaded dynamically */
 /* This creates the "glossy bubble" effect for each page/section */
 .content-section {
-    background-color: #1e293b; /* slate-800, distinct from body bg-slate-900 */
+    background-color: #2a2a40;
     padding: 1.5rem; /* p-6, slightly less for mobile */
     border-radius: 0.75rem; /* rounded-xl for a softer bubble */
-    border: 1px solid #334155; /* slate-700, subtle border */
+    border: 1px solid #3b3b55;
     /* Enhanced shadow for more depth */
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1); /* shadow-2xl like */
     animation: fadeIn 0.5s ease-out;
@@ -215,7 +223,7 @@ ul:not(.flex-col) > li > .nav-link.active {
 /* Style for prominent buttons within content sections */
 .button-style {
     display: inline-block;
-    background-color: #7c3aed; /* purple-600 */
+    background-color: #8b5cf6; /* purple-500 */
     color: white;
     font-weight: 600;
     padding: 0.75rem 1.5rem; /* py-3 px-6 */
@@ -225,7 +233,7 @@ ul:not(.flex-col) > li > .nav-link.active {
 }
 
 .button-style:hover {
-    background-color: #6d28d9; /* purple-700 */
+    background-color: #7c3aed; /* purple-600 */
     box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05); /* shadow-lg */
     text-decoration: none; /* Remove underline on hover for buttons */
 }
