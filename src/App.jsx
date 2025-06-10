@@ -64,10 +64,12 @@ function App() {
   return (
     <Router>
       <ScrollToTopOnRouteChange />
-      <div className="font-sans antialiased min-h-screen bg-white text-slate-800 dark:bg-slate-900 dark:text-slate-200 transition-colors">
-        <header className="bg-gray-100 dark:bg-slate-800 shadow-lg sticky top-0 z-50 transition-colors">
-          <nav className="container mx-auto px-6 py-4 flex justify-between items-center">
-            <Link to="/" className="text-2xl font-bold text-purple-600 dark:text-purple-400 hover:text-purple-500 dark:hover:text-purple-300 transition-colors">HHD Hub</Link>
+
+      <div className="font-sans antialiased min-h-screen bg-gray-50 dark:bg-outer text-slate-800 dark:text-slate-200 transition-colors">
+        <header className="bg-gray-100 dark:bg-surface shadow-lg sticky top-0 z-50 transition-colors">
+          <nav className="max-w-5xl mx-auto px-4 md:px-8 py-4 flex items-center justify-between">
+            <Link to="/" className="text-2xl font-bold text-purple-500 dark:text-purple-400 hover:text-purple-600 dark:hover:text-purple-300 transition-colors">HHD Hub</Link>
+
             <div className="flex items-center">
               <button
                 onClick={() => setDarkMode(!darkMode)}
@@ -94,36 +96,42 @@ function App() {
                 </svg>
               </button>
             </div>
-            <ul className="hidden md:flex space-x-4">
-              <li><Link to="/" className="nav-link hover:text-purple-300 px-3 py-2 rounded-md transition-colors">Home</Link></li>
-              <li><Link to="/unit3" className="nav-link hover:text-purple-300 px-3 py-2 rounded-md transition-colors">Unit 3</Link></li>
-              <li><Link to="/unit4" className="nav-link hover:text-purple-300 px-3 py-2 rounded-md transition-colors">Unit 4</Link></li>
-              <li><Link to="/assessment-prep" className="nav-link hover:text-purple-300 px-3 py-2 rounded-md transition-colors">Assessment Prep</Link></li>
-              <li><Link to="/glossary" className="nav-link hover:text-purple-300 px-3 py-2 rounded-md transition-colors">Glossary</Link></li>
+
+            <ul className="hidden md:flex space-x-6">
+              <li><Link to="/" className="nav-link px-3 py-2 rounded-md text-slate-700 dark:text-slate-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors">Home</Link></li>
+              <li><Link to="/unit3" className="nav-link px-3 py-2 rounded-md text-slate-700 dark:text-slate-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors">Unit 3</Link></li>
+              <li><Link to="/unit4" className="nav-link px-3 py-2 rounded-md text-slate-700 dark:text-slate-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors">Unit 4</Link></li>
+              <li><Link to="/assessment-prep" className="nav-link px-3 py-2 rounded-md text-slate-700 dark:text-slate-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors">Assessment Prep</Link></li>
+              <li><Link to="/glossary" className="nav-link px-3 py-2 rounded-md text-slate-700 dark:text-slate-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors">Glossary</Link></li>
+
             </ul>
           </nav>
           {mobileMenuOpen && (
-            <div className="md:hidden bg-slate-800">
+            <div className="md:hidden bg-gray-100 dark:bg-surface">
               <ul className="flex flex-col items-center py-2 space-y-2">
                 <li>
                   <button
                     onClick={() => setDarkMode(!darkMode)}
-                    className="text-slate-200 hover:text-purple-300 transition-colors"
+
+                    className="text-slate-200 hover:text-purple-400 transition-colors"
+
                   >
                     {darkMode ? 'Light Mode' : 'Dark Mode'}
                   </button>
                 </li>
-                <li><Link to="/" onClick={() => setMobileMenuOpen(false)} className="transition-colors hover:text-purple-300">Home</Link></li>
-                <li><Link to="/unit3" onClick={() => setMobileMenuOpen(false)} className="transition-colors hover:text-purple-300">Unit 3</Link></li>
-                <li><Link to="/unit4" onClick={() => setMobileMenuOpen(false)} className="transition-colors hover:text-purple-300">Unit 4</Link></li>
-                <li><Link to="/assessment-prep" onClick={() => setMobileMenuOpen(false)} className="transition-colors hover:text-purple-300">Assessment Prep</Link></li>
-                <li><Link to="/glossary" onClick={() => setMobileMenuOpen(false)} className="transition-colors hover:text-purple-300">Glossary</Link></li>
+
+                <li><Link to="/" onClick={() => setMobileMenuOpen(false)} className="transition-colors hover:text-purple-600">Home</Link></li>
+                <li><Link to="/unit3" onClick={() => setMobileMenuOpen(false)} className="transition-colors hover:text-purple-600">Unit 3</Link></li>
+                <li><Link to="/unit4" onClick={() => setMobileMenuOpen(false)} className="transition-colors hover:text-purple-600">Unit 4</Link></li>
+                <li><Link to="/assessment-prep" onClick={() => setMobileMenuOpen(false)} className="transition-colors hover:text-purple-600">Assessment Prep</Link></li>
+                <li><Link to="/glossary" onClick={() => setMobileMenuOpen(false)} className="transition-colors hover:text-purple-600">Glossary</Link></li>
+
               </ul>
             </div>
           )}
         </header>
 
-        <main className="container mx-auto px-6 py-8 min-h-[calc(100vh-160px)]">
+        <main className="max-w-5xl mx-auto px-4 md:px-8 py-8 min-h-[calc(100vh-160px)]">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/unit3" element={<Unit3 />} />
@@ -139,7 +147,9 @@ function App() {
           </Routes>
         </main>
 
-        <footer className="bg-gray-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 text-center p-6 shadow-top transition-colors">
+
+        <footer className="bg-gray-100 dark:bg-surface text-slate-500 dark:text-slate-400 text-center p-6 shadow-top transition-colors">
+
           <p>&copy; {new Date().getFullYear()} VCE HHD Study Hub. All rights reserved.</p>
           <p className="text-sm mt-1">Unofficial study support. Always refer to official VCAA materials.</p>
         </footer>
