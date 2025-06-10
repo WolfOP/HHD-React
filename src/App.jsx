@@ -12,6 +12,8 @@ import Unit3Quiz from './pages/Unit3QuizComponent.jsx';
 import Unit3Flashcards from './pages/Unit3FlashcardsComponent.jsx';
 import Unit3PracticeQuestions from './pages/Unit3PracticeQuestionsComponent.jsx';
 import KeySkillsHub from './pages/key-skills-hub.jsx';
+import Progress from './pages/ProgressComponent.jsx';
+import SearchBar from './components/SearchBar.jsx';
 import NotFound from './pages/NotFoundComponent.jsx';
 
 import './App.css';
@@ -41,6 +43,9 @@ function ScrollToTopOnRouteChange() {
   const { pathname } = useLocation();
   useEffect(() => {
     window.scrollTo(0, 0);
+    try {
+      localStorage.setItem('visited_' + pathname, 'true');
+    } catch {}
   }, [pathname]);
   return null;
 }
@@ -64,8 +69,15 @@ function App() {
   return (
     <Router>
       <ScrollToTopOnRouteChange />
-
-      <div className="font-sans antialiased min-h-screen bg-gray-50 dark:bg-outer text-slate-800 dark:text-slate-200 transition-colors">
+            <div className="flex items-center space-x-3">
+              <div className="hidden md:block">
+                <SearchBar />
+              </div>
+                className="hidden md:inline-block text-slate-600 dark:text-slate-300 hover:text-purple-600 dark:hover:text-purple-300 transition-colors"
+              <li><Link to="/progress" className="nav-link px-3 py-2 rounded-md text-slate-700 dark:text-slate-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors">Progress</Link></li>
+                <li className="w-11/12"><SearchBar /></li>
+                <li><Link to="/progress" onClick={() => setMobileMenuOpen(false)} className="transition-colors hover:text-purple-600">Progress</Link></li>
+            <Route path="/progress" element={<Progress />} />
         <header className="bg-gray-100 dark:bg-surface shadow-lg sticky top-0 z-50 transition-colors">
           <nav className="max-w-5xl mx-auto px-4 md:px-8 py-4 flex items-center justify-between">
             <Link to="/" className="text-2xl font-bold text-purple-500 dark:text-purple-400 hover:text-purple-600 dark:hover:text-purple-300 transition-colors">HHD Hub</Link>
