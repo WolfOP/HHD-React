@@ -7,7 +7,9 @@ function getInitialAnnotations(stimulus) {
     const v = localStorage.getItem(key);
     return v ? JSON.parse(v) : [];
   } catch {
+
     // ignore malformed data
+
     return [];
   }
 }
@@ -16,7 +18,9 @@ function saveAnnotations(stimulus, annots) {
     const key = 'annot_' + btoa(unescape(encodeURIComponent(stimulus))).slice(0, 16);
     localStorage.setItem(key, JSON.stringify(annots));
   } catch {
+
     // ignore write errors
+
   }
 }
 
