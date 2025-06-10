@@ -1,5 +1,7 @@
 import React from "react";
+
 import { Container, Title, Text, Image, Button } from "@mantine/core";
+
 import MantineDemoCard from "../components/MantineDemoCard.jsx";
 
 export default function HomeComponent() {
@@ -17,6 +19,7 @@ export default function HomeComponent() {
           e.target.alt = "Image Not Available";
         }}
       />
+
       <Text mb="sm">
         This website is designed to help you navigate the complexities of the
         VCE HHD curriculum, starting with Unit 3 and expanding to Unit 4.
@@ -27,6 +30,7 @@ export default function HomeComponent() {
       </Text>
       <div className="my-8 flex justify-center">
         <MantineDemoCard />
+
       </div>
       <Button component="a" href="#unit3" color="grape" mt="lg">
         Explore Unit 3
