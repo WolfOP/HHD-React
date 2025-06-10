@@ -6,21 +6,24 @@ function getInitialAnnotations(stimulus) {
     const key = 'annot_' + btoa(unescape(encodeURIComponent(stimulus))).slice(0, 16);
     const v = localStorage.getItem(key);
     return v ? JSON.parse(v) : [];
-  } catch { return []; }
+  } catch {
+    // Ignore storage errors
+    return [];
+  }
 }
 function saveAnnotations(stimulus, annots) {
   try {
     const key = 'annot_' + btoa(unescape(encodeURIComponent(stimulus))).slice(0, 16);
     localStorage.setItem(key, JSON.stringify(annots));
-  } catch {}
+  } catch {
+    // Ignore storage errors
+  }
 }
 
 export default function InteractiveAnnotationComponent({ question, stimulus }) {
   const [annotations, setAnnotations] = useState(() => getInitialAnnotations(stimulus));
   const [drawing, setDrawing] = useState(false);
   const [drawings, setDrawings] = useState([]);
-  const [comment, setComment] = useState("");
-  const [showComment, setShowComment] = useState(null);
   const stimulusRef = useRef();
   const canvasRef = useRef();
 
