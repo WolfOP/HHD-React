@@ -1,4 +1,5 @@
 import React from "react";
+import { Container, Title, Text, Button } from "@mantine/core";
 
 export default function NotFoundComponent() {
   const handleGoHome = () => {

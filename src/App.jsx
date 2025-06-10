@@ -12,6 +12,8 @@ import Unit3Quiz from './pages/Unit3QuizComponent.jsx';
 import Unit3Flashcards from './pages/Unit3FlashcardsComponent.jsx';
 import Unit3PracticeQuestions from './pages/Unit3PracticeQuestionsComponent.jsx';
 import KeySkillsHub from './pages/key-skills-hub.jsx';
+import Progress from './pages/ProgressComponent.jsx';
+import SearchBar from './components/SearchBar.jsx';
 import NotFound from './pages/NotFoundComponent.jsx';
 
 import './App.css';
@@ -41,6 +43,11 @@ function ScrollToTopOnRouteChange() {
   const { pathname } = useLocation();
   useEffect(() => {
     window.scrollTo(0, 0);
+    try {
+      localStorage.setItem('visited_' + pathname, 'true');
+    } catch {
+      // ignore storage errors
+    }
   }, [pathname]);
   return null;
 }
@@ -85,15 +92,20 @@ function App() {
     <Router>
       <ScrollToTopOnRouteChange />
 
-      <div className="font-sans antialiased min-h-screen bg-gray-50 dark:bg-outer text-slate-800 dark:text-slate-200 transition-colors">
-        <header className="bg-gray-100 dark:bg-surface shadow-lg sticky top-0 z-50 transition-colors">
-          <nav className="max-w-5xl mx-auto px-4 md:px-8 py-4 flex items-center justify-between">
-            <Link to="/" className="text-2xl font-bold text-purple-500 dark:text-purple-400 hover:text-purple-600 dark:hover:text-purple-300 transition-colors">HHD Hub</Link>
-
-            <div className="flex items-center">
+      <div className="font-sans antialiased min-h-screen bg-outer text-gray-100">
+        <header className="bg-surface shadow-lg sticky top-0 z-50">
+          <nav className="max-w-5xl mx-auto px-4 md:px-8 py-4 flex items-center justify-between space-x-6">
+            <Link to="/" className="text-2xl font-bold text-purple-400 hover:text-purple-300 transition-colors">HHD Hub</Link>
+            <div className="flex items-center space-x-3">
+              <div className="hidden md:block">
+                <SearchBar />
+              </div>
               <button
                 onClick={() => setDarkMode(!darkMode)}
-                className="hidden md:inline-block mr-4 text-slate-600 dark:text-slate-300 hover:text-purple-600 dark:hover:text-purple-300 transition-colors"
+                className="hidden md:inline-block text-slate-600 dark:text-slate-300 hover:text-purple-600 dark:hover:text-purple-300 transition-colors"
+
+
+ 
                 aria-label="Toggle dark mode"
               >
                 {darkMode ? (
@@ -123,30 +135,35 @@ function App() {
             </div>
 
             <ul className="hidden md:flex space-x-6">
-              <li><NavLink to="/">Home</NavLink></li>
-              <li><NavLink to="/unit3">Unit 3</NavLink></li>
-              <li><NavLink to="/unit4">Unit 4</NavLink></li>
-              <li><NavLink to="/assessment-prep">Assessment Prep</NavLink></li>
-              <li><NavLink to="/glossary">Glossary</NavLink></li>
+              <li><Link to="/" className="nav-link px-3 py-2 rounded-md text-slate-700 dark:text-slate-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors">Home</Link></li>
+              <li><Link to="/unit3" className="nav-link px-3 py-2 rounded-md text-slate-700 dark:text-slate-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors">Unit 3</Link></li>
+              <li><Link to="/unit4" className="nav-link px-3 py-2 rounded-md text-slate-700 dark:text-slate-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors">Unit 4</Link></li>
+              <li><Link to="/assessment-prep" className="nav-link px-3 py-2 rounded-md text-slate-700 dark:text-slate-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors">Assessment Prep</Link></li>
+              <li><Link to="/glossary" className="nav-link px-3 py-2 rounded-md text-slate-700 dark:text-slate-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors">Glossary</Link></li>
+
             </ul>
           </nav>
           
           {mobileMenuOpen && (
-            <div className="md:hidden bg-gray-100 dark:bg-surface border-t border-slate-300 dark:border-slate-600">
-              <ul className="flex flex-col py-2 space-y-1 px-4">
+            <div className="md:hidden bg-gray-100 dark:bg-surface">
+              <ul className="flex flex-col items-center py-2 space-y-2">
                 <li>
                   <button
                     onClick={() => setDarkMode(!darkMode)}
-                    className="w-full text-left px-3 py-2 text-slate-600 dark:text-slate-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors rounded-md"
+
+                    className="text-slate-200 hover:text-purple-400 transition-colors"
+
                   >
                     {darkMode ? '☀️ Light Mode' : '🌙 Dark Mode'}
                   </button>
                 </li>
-                <li><NavLink to="/" onClick={() => setMobileMenuOpen(false)} className="block w-full">Home</NavLink></li>
-                <li><NavLink to="/unit3" onClick={() => setMobileMenuOpen(false)} className="block w-full">Unit 3</NavLink></li>
-                <li><NavLink to="/unit4" onClick={() => setMobileMenuOpen(false)} className="block w-full">Unit 4</NavLink></li>
-                <li><NavLink to="/assessment-prep" onClick={() => setMobileMenuOpen(false)} className="block w-full">Assessment Prep</NavLink></li>
-                <li><NavLink to="/glossary" onClick={() => setMobileMenuOpen(false)} className="block w-full">Glossary</NavLink></li>
+
+                <li><Link to="/" onClick={() => setMobileMenuOpen(false)} className="transition-colors hover:text-purple-600">Home</Link></li>
+                <li><Link to="/unit3" onClick={() => setMobileMenuOpen(false)} className="transition-colors hover:text-purple-600">Unit 3</Link></li>
+                <li><Link to="/unit4" onClick={() => setMobileMenuOpen(false)} className="transition-colors hover:text-purple-600">Unit 4</Link></li>
+                <li><Link to="/assessment-prep" onClick={() => setMobileMenuOpen(false)} className="transition-colors hover:text-purple-600">Assessment Prep</Link></li>
+                <li><Link to="/glossary" onClick={() => setMobileMenuOpen(false)} className="transition-colors hover:text-purple-600">Glossary</Link></li>
+
               </ul>
             </div>
           )}
@@ -159,6 +176,7 @@ function App() {
             <Route path="/unit4" element={<Unit4 />} />
             <Route path="/assessment-prep" element={<AssessmentPrep />} />
             <Route path="/glossary" element={<Glossary />} />
+            <Route path="/progress" element={<Progress />} />
             <Route path="/keyskillshub" element={<KeySkillsHub />} />
             <Route path="/unit3-sac2-prep" element={<Unit3SAC2Prep />} />
             <Route path="/unit3-quiz" element={<Unit3Quiz />} />
@@ -170,46 +188,10 @@ function App() {
 
         <ScrollToTopButton />
 
-        <footer className="bg-gray-100 dark:bg-surface border-t border-slate-300 dark:border-slate-600 mt-16 transition-colors">
-          <div className="max-w-5xl mx-auto px-4 md:px-8 py-8">
-            <div className="grid md:grid-cols-3 gap-8">
-              <div>
-                <h3 className="text-lg font-semibold text-purple-500 dark:text-purple-400 mb-3">VCE HHD Study Hub</h3>
-                <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-                  A comprehensive resource for VCE Health and Human Development students. 
-                  Interactive tools, practice questions, and study materials to help you succeed.
-                </p>
-              </div>
-              
-              <div>
-                <h4 className="text-md font-medium text-slate-700 dark:text-slate-300 mb-3">Quick Links</h4>
-                <ul className="space-y-2 text-sm">
-                  <li><Link to="/unit3" className="text-slate-600 dark:text-slate-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors">Unit 3 Content</Link></li>
-                  <li><Link to="/unit3-quiz" className="text-slate-600 dark:text-slate-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors">Practice Quiz</Link></li>
-                  <li><Link to="/glossary" className="text-slate-600 dark:text-slate-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors">Glossary</Link></li>
-                  <li><Link to="/keyskillshub" className="text-slate-600 dark:text-slate-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors">Key Skills</Link></li>
-                </ul>
-              </div>
-              
-              <div>
-                <h4 className="text-md font-medium text-slate-700 dark:text-slate-300 mb-3">Study Tools</h4>
-                <ul className="space-y-2 text-sm">
-                  <li><Link to="/unit3-flashcards" className="text-slate-600 dark:text-slate-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors">Flashcards</Link></li>
-                  <li><Link to="/unit3-practice" className="text-slate-600 dark:text-slate-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors">Practice Questions</Link></li>
-                  <li><Link to="/unit3-sac2-prep" className="text-slate-600 dark:text-slate-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors">SAC 2 Prep</Link></li>
-                  <li><a href="#" className="text-slate-600 dark:text-slate-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors">Study Guides</a></li>
-                </ul>
-              </div>
-            </div>
-            
-            <div className="border-t border-slate-300 dark:border-slate-600 mt-8 pt-6 text-center">
-              <p className="text-xs text-slate-500 dark:text-slate-500">
-                © 2025 VCE HHD Study Hub. Educational content based on the Victorian Curriculum and Assessment Authority (VCAA) study design.
-                <br />
-                <em>Always refer to official VCAA resources for assessment requirements.</em>
-              </p>
-            </div>
-          </div>
+        <footer className="bg-gray-100 dark:bg-surface text-slate-500 dark:text-slate-400 text-center p-6 shadow-top transition-colors">
+
+          <p>&copy; {new Date().getFullYear()} VCE HHD Study Hub. All rights reserved.</p>
+          <p className="text-sm mt-1">Unofficial study support. Always refer to official VCAA materials.</p>
         </footer>
       </div>
     </Router>

@@ -15,6 +15,7 @@ function saveToStorage(key, value) {
     // ignore storage errors
   }
 
+
 }
 function loadFromStorage(key, fallback) {
   try {

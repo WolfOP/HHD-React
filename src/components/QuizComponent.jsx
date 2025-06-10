@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useState } from "react";
 
 const quizQuestions = [
   {
@@ -335,7 +335,8 @@ export default function QuizComponent() {
               Submit Quiz
             </button>
           </div>
-        )}
+        ))}
+        <button type="submit" className="button-style mt-4">Submit Answers</button>
       </form>
 
       {/* Results */}

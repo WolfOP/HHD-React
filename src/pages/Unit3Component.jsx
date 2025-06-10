@@ -1,4 +1,5 @@
 import React from "react";
+import { Button } from "@mantine/core";
 
 export default function Unit3Component() {
   return (
@@ -662,34 +663,34 @@ export default function Unit3Component() {
       <h2 className="mt-8">Interactive Tools & Practice</h2>
       <ul className="list-disc list-inside ml-4">
         <li>
-          <a href="/keyskillshub" className="button-style">
+          <Button component="a" href="/keyskillshub" color="grape" size="sm" className="mb-2">
             Key Skills Hub
-          </a>{" "}
+          </Button>{" "}
           – Practice data analysis, model comparisons, health promotion evaluation,
           and more.
         </li>
         <li>
-          <a href="/unit3-sac2-prep" className="button-style">
+          <Button component="a" href="/unit3-sac2-prep" color="grape" size="sm" className="mb-2">
             Unit 3 SAC 2 Prep
-          </a>{" "}
+          </Button>{" "}
           – Interactive mapping, annotation, and stimulus deconstruction tools.
         </li>
         <li>
-          <a href="/unit3-quiz" className="button-style">
+          <Button component="a" href="/unit3-quiz" color="grape" size="sm" className="mb-2">
             Unit 3 Quiz
-          </a>{" "}
+          </Button>{" "}
           – Test your knowledge with practice questions.
         </li>
         <li>
-          <a href="/unit3-flashcards" className="button-style">
+          <Button component="a" href="/unit3-flashcards" color="grape" size="sm" className="mb-2">
             Glossary Flashcards
-          </a>{" "}
+          </Button>{" "}
           – Revise key terms and definitions.
         </li>
         <li>
-          <a href="/unit3-practice" className="button-style">
+          <Button component="a" href="/unit3-practice" color="grape" size="sm" className="mb-2">
             Practice Questions
-          </a>{" "}
+          </Button>{" "}
           – Practice exam-style questions for Unit 3.
         </li>
       </ul>

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Button, Group } from "@mantine/core";
 
 const flashcards = [
   { term: 'Health and Wellbeing', definition: "The overall state of a person's physical, social, emotional, mental and spiritual existence." },
@@ -50,57 +51,17 @@ export default function FlashcardsComponent() {
   return (
     <div className="p-4 bg-slate-800 rounded-lg shadow-md max-w-2xl mx-auto">
       <h2 className="text-xl font-semibold mb-4 text-purple-300">Unit 3 Glossary Flashcards</h2>
-      
-      <div className="mb-4">
-        <input 
-          type="text" 
-          placeholder="Search terms..." 
-          value={searchTerm}
-          onChange={handleSearchChange}
-          className="w-full p-2 rounded-lg bg-slate-700 text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
-        />
-      </div>
-
-      {filteredCards.length > 0 ? (
-        <div>
-          <div className="text-2xl font-bold mb-2">{card.term}</div>
-          {showDef && (
-            <div className="mb-4">{card.definition}</div>
-          )}
-          <div className="flex justify-between items-center mb-4">
-            <button 
-              className={`button-style ${favorites.includes(card) ? 'text-yellow-300' : ''}`} 
-              onClick={handleFavorite}
-              aria-label="Toggle favorite"
-            >
-              {favorites.includes(card) ? '★ Favorited' : '☆ Favorite'}
-            </button>
-            <button 
-              className="text-purple-300 underline" 
-              onClick={handleInfoToggle}
-              aria-label="Toggle info"
-            >
-              {showInfo ? 'Hide Info' : 'Show Info'}
-            </button>
-          </div>
-          {showInfo && (
-            <div className="text-sm text-gray-400 mb-4">
-              Use arrow keys to navigate, spacebar to toggle definition, and enter to favorite.
-            </div>
-          )}
-          <button className="button-style mb-4" onClick={handleToggle}>
-            {showDef ? 'Hide Definition' : 'Show Definition'}
-          </button>
-          <div className="space-x-4">
-            <button className="button-style" onClick={handlePrev}>Previous</button>
-            <button className="button-style" onClick={handleNext}>Next</button>
-          </div>
-        </div>
-      ) : (
-        <div className="text-center text-gray-400 py-4">
-          No results found for "<span className="text-white">{searchTerm}</span>".
-        </div>
+      <div className="text-2xl font-bold mb-2">{card.term}</div>
+      {showDef && (
+        <div className="mb-4">{card.definition}</div>
       )}
+      <button className="button-style mb-4" onClick={handleToggle}>
+        {showDef ? 'Hide Definition' : 'Show Definition'}
+      </button>
+      <div className="space-x-4">
+        <button className="button-style" onClick={handlePrev}>Previous</button>
+        <button className="button-style" onClick={handleNext}>Next</button>
+      </div>
     </div>
   );
 }
