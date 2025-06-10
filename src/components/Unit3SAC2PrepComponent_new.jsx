@@ -459,6 +459,12 @@ export default function Unit3SAC2PrepComponent() {
     { value: "prevention", label: "Prevention", icon: "🛡️" }
   ];
 
+  const tabOptions = [
+    { id: "questions", label: "Question Browser", icon: "📚" },
+    { id: "practice", label: "Active Practice", icon: "✏️" },
+    { id: "tools", label: "Interactive Tools", icon: "🛠️" }
+  ];
+
   const getQuestionCategory = (question) => {
     const title = question.title.toLowerCase();
     if (title.includes('promotion') || title.includes('ottawa')) return 'health-promotion';
@@ -562,11 +568,7 @@ export default function Unit3SAC2PrepComponent() {
       <div className="sticky top-0 z-20 bg-white/95 backdrop-blur-sm border-b border-gray-200 dark:bg-slate-800/95 dark:border-slate-700">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex space-x-1 py-3">
-            {{
-              { id: "questions", label: "Question Browser", icon: "📚" },
-              { id: "practice", label: "Active Practice", icon: "✏️" },
-              { id: "tools", label: "Interactive Tools", icon: "🛠️" }
-            }.map(tab => (
+            {tabOptions.map(tab => (
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}

@@ -18,33 +18,89 @@ const flashcards = [
 export default function FlashcardsComponent() {
   const [current, setCurrent] = useState(0);
   const [showDef, setShowDef] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [favorites, setFavorites] = useState([]);
+  const [showInfo, setShowInfo] = useState(false);
 
-  const card = flashcards[current];
+  const filteredCards = flashcards.filter(card => 
+    card.term.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  const card = filteredCards[current];
 
   const handleToggle = () => setShowDef((v) => !v);
   const handlePrev = () => {
-    setCurrent((c) => (c === 0 ? flashcards.length - 1 : c - 1));
+    setCurrent((c) => (c === 0 ? filteredCards.length - 1 : c - 1));
     setShowDef(false);
   };
   const handleNext = () => {
-    setCurrent((c) => (c === flashcards.length - 1 ? 0 : c + 1));
+    setCurrent((c) => (c === filteredCards.length - 1 ? 0 : c + 1));
     setShowDef(false);
   };
+  const handleSearchChange = (e) => setSearchTerm(e.target.value);
+  const handleFavorite = () => {
+    if (favorites.includes(card)) {
+      setFavorites(favorites.filter(fav => fav !== card));
+    } else {
+      setFavorites([...favorites, card]);
+    }
+  };
+  const handleInfoToggle = () => setShowInfo((v) => !v);
 
   return (
-    <div className="p-4 bg-slate-800 rounded-lg shadow-md">
+    <div className="p-4 bg-slate-800 rounded-lg shadow-md max-w-2xl mx-auto">
       <h2 className="text-xl font-semibold mb-4 text-purple-300">Unit 3 Glossary Flashcards</h2>
-      <div className="text-2xl font-bold mb-2">{card.term}</div>
-      {showDef && (
-        <div className="mb-4">{card.definition}</div>
-      )}
-      <button className="button-style mb-4" onClick={handleToggle}>
-        {showDef ? 'Hide Definition' : 'Show Definition'}
-      </button>
-      <div className="space-x-4">
-        <button className="button-style" onClick={handlePrev}>Previous</button>
-        <button className="button-style" onClick={handleNext}>Next</button>
+      
+      <div className="mb-4">
+        <input 
+          type="text" 
+          placeholder="Search terms..." 
+          value={searchTerm}
+          onChange={handleSearchChange}
+          className="w-full p-2 rounded-lg bg-slate-700 text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
+        />
       </div>
+
+      {filteredCards.length > 0 ? (
+        <div>
+          <div className="text-2xl font-bold mb-2">{card.term}</div>
+          {showDef && (
+            <div className="mb-4">{card.definition}</div>
+          )}
+          <div className="flex justify-between items-center mb-4">
+            <button 
+              className={`button-style ${favorites.includes(card) ? 'text-yellow-300' : ''}`} 
+              onClick={handleFavorite}
+              aria-label="Toggle favorite"
+            >
+              {favorites.includes(card) ? '★ Favorited' : '☆ Favorite'}
+            </button>
+            <button 
+              className="text-purple-300 underline" 
+              onClick={handleInfoToggle}
+              aria-label="Toggle info"
+            >
+              {showInfo ? 'Hide Info' : 'Show Info'}
+            </button>
+          </div>
+          {showInfo && (
+            <div className="text-sm text-gray-400 mb-4">
+              Use arrow keys to navigate, spacebar to toggle definition, and enter to favorite.
+            </div>
+          )}
+          <button className="button-style mb-4" onClick={handleToggle}>
+            {showDef ? 'Hide Definition' : 'Show Definition'}
+          </button>
+          <div className="space-x-4">
+            <button className="button-style" onClick={handlePrev}>Previous</button>
+            <button className="button-style" onClick={handleNext}>Next</button>
+          </div>
+        </div>
+      ) : (
+        <div className="text-center text-gray-400 py-4">
+          No results found for "<span className="text-white">{searchTerm}</span>".
+        </div>
+      )}
     </div>
   );
 }
