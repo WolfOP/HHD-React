@@ -13,6 +13,10 @@
   --spacing-md: 1rem;
   --spacing-lg: 1.5rem;
   --spacing-xl: 2rem;
+
+  /* Component-specific spacing */
+  --nav-padding-y: var(--spacing-sm);
+  --nav-padding-x: var(--spacing-md);
   
   /* Shadows */
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
@@ -53,7 +57,8 @@ button:hover {
 }
 button:focus,
 button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  outline: none;
+  box-shadow: 0 0 0 2px var(--color-primary);
 }
 
 @media (prefers-color-scheme: light) {
@@ -63,6 +68,10 @@ button:focus-visible {
   }
   a:hover {
     color: #747bff;
+  }
+  a:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--color-primary);
   }
   button {
     background-color: #f9f9f9;
@@ -103,13 +112,18 @@ body {
     background: #475569; /* slate-600 */
 }
 
-/* Navigation styles */
-.nav-link {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    transition: all var(--transition-normal);
-}
+  /* Navigation styles */
+  .nav-link {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      padding: var(--nav-padding-y, var(--spacing-sm)) var(--nav-padding-x, var(--spacing-md));
+      border-radius: 0.375rem; /* rounded-md */
+      transition: all var(--transition-normal);
+  }
+  .nav-link:hover {
+      background-color: rgba(139, 92, 246, 0.1);
+  }
 
 .nav-link:focus {
     outline: none;

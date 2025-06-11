@@ -14,6 +14,7 @@ import Unit3PracticeQuestions from './pages/Unit3PracticeQuestionsComponent.jsx'
 import KeySkillsHub from './pages/key-skills-hub.jsx';
 import Progress from './pages/ProgressComponent.jsx';
 import SearchBar from './components/SearchBar.jsx';
+import HelpModal from './components/HelpModal.jsx';
 import NotFound from './pages/NotFoundComponent.jsx';
 
 import './App.css';
@@ -61,7 +62,7 @@ function NavLink({ to, children, onClick, className = "" }) {
     <Link
       to={to}
       onClick={onClick}
-      className={`nav-link px-3 py-2 rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-purple-400 ${
+      className={`nav-link transition-colors focus:outline-none focus:ring-2 focus:ring-purple-400 ${
         isActive
           ? 'text-purple-400 bg-purple-900/30 border-b-2 border-purple-400 font-semibold'
           : 'text-slate-700 dark:text-slate-300 hover:text-purple-600 dark:hover:text-purple-400'
@@ -77,6 +78,14 @@ function App() {
   const [darkMode, setDarkMode] = useState(() =>
     localStorage.getItem('theme') === 'dark'
   );
+
+  useEffect(() => {
+    const handler = (e) => {
+      if (e.key === 'Escape') setMobileMenuOpen(false);
+    };
+    window.addEventListener('keydown', handler);
+    return () => window.removeEventListener('keydown', handler);
+  }, []);
 
   useEffect(() => {
     if (darkMode) {
@@ -100,6 +109,7 @@ function App() {
               <div className="hidden md:block">
                 <SearchBar />
               </div>
+              <HelpModal />
               <button
                 onClick={() => setDarkMode(!darkMode)}
                 className="hidden md:inline-block text-slate-600 dark:text-slate-300 hover:text-purple-600 dark:hover:text-purple-300 transition-colors"
@@ -123,6 +133,8 @@ function App() {
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 className="md:hidden text-slate-600 dark:text-slate-300 hover:text-purple-600 dark:hover:text-purple-300 transition-colors"
                 aria-label="Toggle mobile menu"
+                aria-expanded={mobileMenuOpen}
+                aria-controls="mobile-menu"
               >
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   {mobileMenuOpen ? (
@@ -135,17 +147,26 @@ function App() {
             </div>
 
             <ul className="hidden md:flex space-x-6">
-              <li><Link to="/" className="nav-link px-3 py-2 rounded-md text-slate-700 dark:text-slate-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors">Home</Link></li>
-              <li><Link to="/unit3" className="nav-link px-3 py-2 rounded-md text-slate-700 dark:text-slate-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors">Unit 3</Link></li>
-              <li><Link to="/unit4" className="nav-link px-3 py-2 rounded-md text-slate-700 dark:text-slate-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors">Unit 4</Link></li>
-              <li><Link to="/assessment-prep" className="nav-link px-3 py-2 rounded-md text-slate-700 dark:text-slate-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors">Assessment Prep</Link></li>
-              <li><Link to="/glossary" className="nav-link px-3 py-2 rounded-md text-slate-700 dark:text-slate-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors">Glossary</Link></li>
+              <li><Link to="/" className="nav-link text-slate-700 dark:text-slate-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors">Home</Link></li>
+              <li><Link to="/unit3" className="nav-link text-slate-700 dark:text-slate-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors">Unit 3</Link></li>
+              <li><Link to="/unit4" className="nav-link text-slate-700 dark:text-slate-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors">Unit 4</Link></li>
+              <li><Link to="/assessment-prep" className="nav-link text-slate-700 dark:text-slate-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors">Assessment Prep</Link></li>
+              <li><Link to="/glossary" className="nav-link text-slate-700 dark:text-slate-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors">Glossary</Link></li>
 
             </ul>
           </nav>
           
           {mobileMenuOpen && (
-            <div className="md:hidden bg-gray-100 dark:bg-surface">
+            <>
+              <div
+                className="fixed inset-0 bg-black/30 md:hidden"
+                onClick={() => setMobileMenuOpen(false)}
+                aria-hidden="true"
+              />
+              <div
+                id="mobile-menu"
+                className="md:hidden fixed top-16 inset-x-0 bg-gray-100 dark:bg-surface z-50"
+              >
               <ul className="flex flex-col items-center py-2 space-y-2">
                 <li>
                   <button
@@ -158,18 +179,19 @@ function App() {
                   </button>
                 </li>
 
-                <li><Link to="/" onClick={() => setMobileMenuOpen(false)} className="transition-colors hover:text-purple-600">Home</Link></li>
-                <li><Link to="/unit3" onClick={() => setMobileMenuOpen(false)} className="transition-colors hover:text-purple-600">Unit 3</Link></li>
-                <li><Link to="/unit4" onClick={() => setMobileMenuOpen(false)} className="transition-colors hover:text-purple-600">Unit 4</Link></li>
-                <li><Link to="/assessment-prep" onClick={() => setMobileMenuOpen(false)} className="transition-colors hover:text-purple-600">Assessment Prep</Link></li>
-                <li><Link to="/glossary" onClick={() => setMobileMenuOpen(false)} className="transition-colors hover:text-purple-600">Glossary</Link></li>
+                <li><Link to="/" onClick={() => setMobileMenuOpen(false)} className="nav-link transition-colors hover:text-purple-600">Home</Link></li>
+                <li><Link to="/unit3" onClick={() => setMobileMenuOpen(false)} className="nav-link transition-colors hover:text-purple-600">Unit 3</Link></li>
+                <li><Link to="/unit4" onClick={() => setMobileMenuOpen(false)} className="nav-link transition-colors hover:text-purple-600">Unit 4</Link></li>
+                <li><Link to="/assessment-prep" onClick={() => setMobileMenuOpen(false)} className="nav-link transition-colors hover:text-purple-600">Assessment Prep</Link></li>
+                <li><Link to="/glossary" onClick={() => setMobileMenuOpen(false)} className="nav-link transition-colors hover:text-purple-600">Glossary</Link></li>
 
               </ul>
-            </div>
+              </div>
+            </>
           )}
         </header>
 
-        <main className="max-w-5xl mx-auto px-4 md:px-8 py-8 min-h-[calc(100vh-160px)]">
+        <main id="app-content" className="max-w-5xl mx-auto px-4 md:px-8 py-8 min-h-[calc(100vh-160px)]">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/unit3" element={<Unit3 />} />
