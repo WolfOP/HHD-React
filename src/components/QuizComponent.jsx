@@ -324,9 +324,7 @@ export default function QuizComponent() {
             </svg>
             <p>No questions found with current filters.</p>
           </div>
-        )}
-
-        {filteredQuestions.length > 0 && !showExplanations && (
+        )}        {filteredQuestions.length > 0 && !showExplanations && (
           <div className="flex justify-center">
             <button
               type="submit"
@@ -335,8 +333,7 @@ export default function QuizComponent() {
               Submit Quiz
             </button>
           </div>
-        ))}
-        <button type="submit" className="button-style mt-4">Submit Answers</button>
+        )}
       </form>
 
       {/* Results */}
