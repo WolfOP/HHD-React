@@ -101,9 +101,9 @@ function App() {
     <Router>
       <ScrollToTopOnRouteChange />
 
-      <div className="font-sans antialiased min-h-screen bg-outer text-gray-100">
-        <header className="bg-surface shadow-lg sticky top-0 z-50">
-          <nav className="max-w-5xl mx-auto px-4 md:px-8 py-4 flex items-center justify-between space-x-6">
+      <div className="font-sans antialiased min-h-screen bg-gradient-to-b from-outer to-surface text-gray-100">
+        <header className="bg-surface/70 backdrop-blur border-b border-purple-700/40 shadow-lg sticky top-0 z-50">
+          <nav className="w-full px-6 md:px-8 py-4 flex items-center justify-between space-x-6">
             <Link to="/" className="text-2xl font-bold text-purple-400 hover:text-purple-300 transition-colors">HHD Hub</Link>
             <div className="flex items-center space-x-3">
               <div className="hidden md:block">
@@ -165,7 +165,7 @@ function App() {
               />
               <div
                 id="mobile-menu"
-                className="md:hidden fixed top-16 inset-x-0 bg-gray-100 dark:bg-surface z-50"
+                className="md:hidden fixed top-16 inset-x-0 bg-surface/90 backdrop-blur z-50"
               >
               <ul className="flex flex-col items-center py-2 space-y-2">
                 <li>
@@ -191,7 +191,7 @@ function App() {
           )}
         </header>
 
-        <main id="app-content" className="max-w-5xl mx-auto px-4 md:px-8 py-8 min-h-[calc(100vh-160px)]">
+        <main id="app-content" className="w-full px-6 md:px-8 py-8 min-h-[calc(100vh-160px)]">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/unit3" element={<Unit3 />} />
@@ -210,7 +210,7 @@ function App() {
 
         <ScrollToTopButton />
 
-        <footer className="bg-gray-100 dark:bg-surface text-slate-500 dark:text-slate-400 text-center p-6 shadow-top transition-colors">
+        <footer className="bg-surface/70 backdrop-blur border-t border-purple-700/40 text-slate-500 dark:text-slate-400 text-center p-6 shadow-top transition-colors">
 
           <p>&copy; {new Date().getFullYear()} VCE HHD Study Hub. All rights reserved.</p>
           <p className="text-sm mt-1">Unofficial study support. Always refer to official VCAA materials.</p>
