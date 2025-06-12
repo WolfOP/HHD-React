@@ -2,8 +2,10 @@
 
 This checklist outlines the steps required to modernise the interface with a dark glossy aesthetic and purple accents. Each step should be reviewed on both desktop and mobile.
 
-- [ ] Audit existing components and identify hard‑coded max widths or margins.
-- [ ] Expand layout containers so content spans the full viewport width.
+
+- [x] Audit existing components and identify hard‑coded max widths or margins.
+- [x] Expand layout containers so content spans the full viewport width.
+
 - [ ] Apply a dark gradient background with subtle purple tones for depth.
 - [ ] Update header and footer styles to match the new glossy look.
 - [ ] Replace placeholder images with higher‑quality assets where available.
