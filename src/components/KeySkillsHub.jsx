@@ -196,8 +196,8 @@ export default function KeySkillsHub() {
 
 	if (selectedSkill) {
 		const SkillComponent = selectedSkill.component;
-		return (
-			<div className="max-w-6xl mx-auto">
+                return (
+                        <div className="w-full px-4">
 				<div className="mb-6 flex items-center gap-4">
 					<button
 						onClick={() => setSelectedSkill(null)}
@@ -217,8 +217,8 @@ export default function KeySkillsHub() {
 		);
 	}
 
-	return (
-		<div className="max-w-6xl mx-auto">
+        return (
+                <div className="w-full px-4">
 			{/* Header */}
 			<div className="mb-8">
 				<h1 className="text-3xl font-bold text-purple-400 mb-2">🎪 Key Skills Hub</h1>

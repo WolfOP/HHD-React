@@ -512,7 +512,7 @@ export default function Unit3SAC2PrepComponent() {
       {/* Header Section */}
       <div className="relative overflow-hidden bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 text-white">
         <div className="absolute inset-0 bg-black/20"></div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="relative w-full px-4 sm:px-6 lg:px-8 py-16">
           <div className="text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-4">
               📝 Unit 3 SAC 2 Preparation
@@ -559,7 +559,7 @@ export default function Unit3SAC2PrepComponent() {
       </div>
 
       {/* Navigation Tabs */}
-      <div className="sticky top-0 z-20 bg-white/95 backdrop-blur-sm border-b border-gray-200 dark:bg-slate-800/95 dark:border-slate-700">        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="sticky top-0 z-20 bg-white/95 backdrop-blur-sm border-b border-gray-200 dark:bg-slate-800/95 dark:border-slate-700">        <div className="w-full px-4 sm:px-6 lg:px-8">
           <div className="flex space-x-1 py-3">
             {[
               { id: "questions", label: "Question Browser", icon: "📚" },
@@ -583,7 +583,7 @@ export default function Unit3SAC2PrepComponent() {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="w-full px-4 sm:px-6 lg:px-8 py-8">
         {/* Question Browser Tab */}
         {activeTab === "questions" && (
           <div className="space-y-6">
