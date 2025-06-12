@@ -102,7 +102,9 @@ function App() {
       <ScrollToTopOnRouteChange />
 
       <div className="font-sans antialiased min-h-screen bg-gradient-to-b from-outer to-surface text-gray-100">
-        <header className="bg-surface/80 backdrop-blur shadow-lg sticky top-0 z-50">
+
+        <header className="bg-surface/70 backdrop-blur border-b border-purple-700/40 shadow-lg sticky top-0 z-50">
+
           <nav className="w-full px-6 md:px-8 py-4 flex items-center justify-between space-x-6">
             <Link to="/" className="text-2xl font-bold text-purple-400 hover:text-purple-300 transition-colors">HHD Hub</Link>
             <div className="flex items-center space-x-3">
@@ -210,7 +212,8 @@ function App() {
 
         <ScrollToTopButton />
 
-        <footer className="bg-surface/80 backdrop-blur text-slate-500 dark:text-slate-400 text-center p-6 shadow-top transition-colors">
+        <footer className="bg-surface/70 backdrop-blur border-t border-purple-700/40 text-slate-500 dark:text-slate-400 text-center p-6 shadow-top transition-colors">
+
 
           <p>&copy; {new Date().getFullYear()} VCE HHD Study Hub. All rights reserved.</p>
           <p className="text-sm mt-1">Unofficial study support. Always refer to official VCAA materials.</p>
