@@ -18,7 +18,17 @@ export default function Unit3PracticeQuestionsComponent() {
     { id: 'extended', name: 'Extended Response (6-12 marks)' }
   ];
 
-  const practiceQuestions = [
+  const toggleFavorite = (questionId) => {
+    setFavorites(prev => {
+      const updated = prev.includes(questionId)
+        ? prev.filter(id => id !== questionId)
+        : [...prev, questionId];
+      localStorage.setItem("practiceQuestionsFavorites", JSON.stringify(updated));
+      return updated;
+    });
+  };
+
+  const practiceQuestions = useMemo(() => [
     // Outcome 1 Questions
     {
       id: 1,
@@ -248,17 +258,7 @@ export default function Unit3PracticeQuestionsComponent() {
       keywords: ['Discuss', 'Optimal health as resource', 'Benefits', 'Individual', 'National'],
       difficulty: 'hard'
     }
-  ];
-
-  const toggleFavorite = (questionId) => {
-    setFavorites(prev => {
-      const updated = prev.includes(questionId)
-        ? prev.filter(id => id !== questionId)
-        : [...prev, questionId];
-      localStorage.setItem("practiceQuestionsFavorites", JSON.stringify(updated));
-      return updated;
-    });
-  };
+  ], []); // Empty dependency array because it's a constant
 
   const filteredQuestions = useMemo(() => {
     let questions = practiceQuestions;
