@@ -77,7 +77,7 @@ export default function KeySkill4() {
 		if (!startTime) {
 			setStartTime(Date.now());
 		}
-	}, []);
+	}, [startTime]);
 
 	const handleReset = () => {
 		setResetKey(Date.now());

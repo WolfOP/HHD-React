@@ -289,7 +289,7 @@ export default function Unit3PracticeQuestionsComponent() {
     });
 
     return questions;
-  }, [selectedCategory, searchTerm, showOnlyFavorites, favorites, sortBy]);
+  }, [selectedCategory, searchTerm, showOnlyFavorites, favorites, sortBy, practiceQuestions]);
 
   const getDifficultyColor = (difficulty) => {
     switch (difficulty) {

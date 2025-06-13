@@ -671,7 +671,7 @@ export default function Unit3SAC2PrepComponent() {
 
             {/* Questions Grid */}
             <div className="grid gap-6 md:grid-cols-2">
-              {filteredQuestions.map((question, index) => (
+              {filteredQuestions.map((question) => (
                 <div
                   key={question.id}
                   className="group bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-gray-200 dark:border-slate-700 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"

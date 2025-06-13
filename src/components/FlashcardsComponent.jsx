@@ -19,9 +19,9 @@ const flashcards = [
 export default function FlashcardsComponent() {
   const [current, setCurrent] = useState(0);
   const [showDef, setShowDef] = useState(false);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [favorites, setFavorites] = useState([]);
-  const [showInfo, setShowInfo] = useState(false);
+  const [searchTerm] = useState(""); // setSearchTerm removed as handleSearchChange is unused
+  // const [favorites, setFavorites] = useState([]); // Removed as handleFavorite and favorites are unused
+  // const [showInfo, setShowInfo] = useState(false); // Removed as handleInfoToggle and showInfo are unused
 
   const filteredCards = flashcards.filter(card => 
     card.term.toLowerCase().includes(searchTerm.toLowerCase())
@@ -38,15 +38,15 @@ export default function FlashcardsComponent() {
     setCurrent((c) => (c === filteredCards.length - 1 ? 0 : c + 1));
     setShowDef(false);
   };
-  const handleSearchChange = (e) => setSearchTerm(e.target.value);
-  const handleFavorite = () => {
-    if (favorites.includes(card)) {
-      setFavorites(favorites.filter(fav => fav !== card));
-    } else {
-      setFavorites([...favorites, card]);
-    }
-  };
-  const handleInfoToggle = () => setShowInfo((v) => !v);
+  // const handleSearchChange = (e) => setSearchTerm(e.target.value); // Removed as unused
+  // const handleFavorite = () => { // Removed as unused
+  //   if (favorites.includes(card)) {
+  //     setFavorites(favorites.filter(fav => fav !== card));
+  //   } else {
+  //     setFavorites([...favorites, card]);
+  //   }
+  // };
+  // const handleInfoToggle = () => setShowInfo((v) => !v); // Removed as unused
 
   return (
     <div className="p-4 bg-slate-800 rounded-lg shadow-md max-w-2xl mx-auto">
