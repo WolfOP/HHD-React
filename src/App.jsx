@@ -1,5 +1,5 @@
 // src/App.jsx
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
 
 import Home from './pages/HomeComponent.jsx';
@@ -78,6 +78,8 @@ function App() {
   const [darkMode, setDarkMode] = useState(() =>
     localStorage.getItem('theme') === 'dark'
   );
+  const sidebarRef = useRef(null);
+  const hamburgerButtonRef = useRef(null);
 
   useEffect(() => {
     const handler = (e) => {
@@ -96,6 +98,71 @@ function App() {
       localStorage.setItem('theme', 'light');
     }
   }, [darkMode]);
+
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      const focusableElementsQuery = 'a[href], button:not([disabled]), input:not([disabled]), textarea:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])';
+      const focusableElements = sidebarRef.current?.querySelectorAll(focusableElementsQuery);
+
+      if (focusableElements && focusableElements.length > 0) {
+        // Filter for visible elements before focusing
+        const visibleFocusableElements = Array.from(focusableElements).filter(el => {
+          const style = window.getComputedStyle(el);
+          return style.display !== 'none' && style.visibility !== 'hidden' && el.offsetHeight > 0 && el.offsetWidth > 0;
+        });
+        if (visibleFocusableElements.length > 0) {
+          visibleFocusableElements[0].focus();
+        }
+      }
+
+      const handleKeyDown = (event) => {
+        if (event.key === 'Tab') {
+          const focusableElements = sidebarRef.current?.querySelectorAll(focusableElementsQuery);
+          if (!focusableElements || focusableElements.length === 0) return;
+
+          const visibleFocusableElements = Array.from(focusableElements).filter(el => {
+            const style = window.getComputedStyle(el);
+            return style.display !== 'none' && style.visibility !== 'hidden' && el.offsetHeight > 0 && el.offsetWidth > 0;
+          });
+          if (visibleFocusableElements.length === 0) return;
+
+
+          const firstElement = visibleFocusableElements[0];
+          const lastElement = visibleFocusableElements[visibleFocusableElements.length - 1];
+
+          if (event.shiftKey) { // Shift + Tab
+            if (document.activeElement === firstElement) {
+              lastElement.focus();
+              event.preventDefault();
+            }
+          } else { // Tab
+            if (document.activeElement === lastElement) {
+              firstElement.focus();
+              event.preventDefault();
+            }
+          }
+        }
+      };
+
+      const currentSidebarRef = sidebarRef.current;
+      currentSidebarRef?.addEventListener('keydown', handleKeyDown);
+
+      return () => {
+        currentSidebarRef?.removeEventListener('keydown', handleKeyDown);
+        // Only return focus if the active element is still within the sidebar or if the sidebar itself had focus
+        if (hamburgerButtonRef.current && (sidebarRef.current?.contains(document.activeElement) || document.activeElement === sidebarRef.current)) {
+            hamburgerButtonRef.current.focus();
+        }
+      };
+    } else {
+        // If sidebar is closing and focus was inside, return to hamburger
+        // This handles cases like Escape key closing when focus is in sidebar
+        if (hamburgerButtonRef.current && sidebarRef.current?.contains(document.activeElement)) {
+            hamburgerButtonRef.current.focus();
+        }
+    }
+  }, [mobileMenuOpen]);
+
 
   return (
     <Router>
@@ -132,6 +199,7 @@ function App() {
               </button>
 
               <button
+                ref={hamburgerButtonRef}
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 className="md:hidden text-slate-600 dark:text-slate-300 hover:text-purple-600 dark:hover:text-purple-300 transition-colors"
                 aria-label="Toggle mobile menu"
@@ -171,11 +239,15 @@ function App() {
         {/* Sidebar */}
         <div
           id="sidebar-container"
+          ref={sidebarRef}
           className={`fixed top-0 left-0 h-screen w-64 bg-outer text-slate-100 p-5 z-60 transform transition-transform duration-300 ease-in-out shadow-xl
                      ${mobileMenuOpen ? 'translate-x-0' : '-translate-x-full'}`}
           role="dialog"
           aria-modal="true"
           aria-labelledby="sidebar-title"
+          // Add tabindex="-1" to make the div focusable for the keydown listener, if needed,
+          // or attach listener to document/window and check if sidebar is open.
+          // For now, attaching to the sidebar div itself. It should receive focus programmatically or via its children.
         >
           <div className="flex justify-between items-center mb-6">
             <h2 id="sidebar-title" className="text-xl font-semibold text-purple-400">Menu</h2>

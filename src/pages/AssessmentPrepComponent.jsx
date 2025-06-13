@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 
 export default function AssessmentPrepComponent() {
-  const [, setSearchTerm] = useState("");
-  const [, setSelectedFilter] = useState("all");
-  const [completedSections, setCompletedSections] = useState(() => {
+  // const [, setSearchTerm] = useState(""); // Unused
+  // const [, setSelectedFilter] = useState("all"); // Unused
+  const [completedSections] = useState(() => { // setCompletedSections is unused
     const saved = localStorage.getItem('assessment-prep-progress');
     return saved ? JSON.parse(saved) : {};
   });
-  const [favorites, setFavorites] = useState(() => {
+  const [favorites] = useState(() => { // setFavorites is unused
     const saved = localStorage.getItem('assessment-prep-favorites');
     return saved ? JSON.parse(saved) : [];
   });
@@ -21,7 +21,8 @@ export default function AssessmentPrepComponent() {
     localStorage.setItem('assessment-prep-favorites', JSON.stringify(favorites));
   }, [favorites]);
 
-  const assessmentSections = [ // This variable is used later in the return statement indirectly via progressPercentage calculation
+  /*
+  const assessmentSections = [ // This variable is unused
     {
       id: "overview",
       title: "Assessment Overview",
@@ -138,6 +139,7 @@ export default function AssessmentPrepComponent() {
       }
     }
   ];
+  */
 
   // const filteredSections = assessmentSections.filter(section => {
   //   const matchesSearch = section.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
