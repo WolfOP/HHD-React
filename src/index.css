@@ -86,13 +86,19 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background-color: #ffffff;
+    width: 100%;
+    margin: 0;
+
+    background: linear-gradient(180deg, #ffffff 0%, #f1f5f9 100%);
+
     color: #1e293b;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition: background 0.3s ease, color 0.3s ease;
 }
 
 .dark body {
-    background-color: #1e1e2f;
+
+    background: linear-gradient(180deg, #1e1e2f 0%, #2a2a40 60%, #3b1c6b 100%);
+
     color: #cbd5e1;
 }
 
