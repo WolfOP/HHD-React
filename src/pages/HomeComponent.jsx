@@ -1,51 +1,51 @@
 import React from "react";
 
 export default function HomeComponent() {
-  const features = [
-    {
-      icon: "📚",
-      title: "Comprehensive Glossary",
-      description: "Searchable, interactive glossary with favorites and progress tracking",
-      link: "/glossary"
-    },
-    {
-      icon: "🧠",
-      title: "Interactive Quiz",
-      description: "Test your knowledge with categorized questions and instant feedback",
-      link: "/unit3-quiz"
-    },
-    {
-      icon: "🎯",
-      title: "Practice Questions",
-      description: "Exam-style questions with difficulty levels and study tips",
-      link: "/unit3-practice"
-    },
-    {
-      icon: "🔄",
-      title: "Flashcards",
-      description: "Spaced repetition learning with favorites and progress tracking",
-      link: "/unit3-flashcards"
-    },
-    {
-      icon: "🎪",
-      title: "Key Skills Hub",
-      description: "Interactive activities covering all essential VCE HHD skills",
-      link: "/keyskillshub"
-    },
-    {
-      icon: "📝",
-      title: "SAC 2 Prep",
-      description: "Advanced preparation tools with annotation and mapping features",
-      link: "/unit3-sac2-prep"
-    }
-  ];
+  // const features = [ // Unused
+  //   {
+  //     icon: "📚",
+  //     title: "Comprehensive Glossary",
+  //     description: "Searchable, interactive glossary with favorites and progress tracking",
+  //     link: "/glossary"
+  //   },
+  //   {
+  //     icon: "🧠",
+  //     title: "Interactive Quiz",
+  //     description: "Test your knowledge with categorized questions and instant feedback",
+  //     link: "/unit3-quiz"
+  //   },
+  //   {
+  //     icon: "🎯",
+  //     title: "Practice Questions",
+  //     description: "Exam-style questions with difficulty levels and study tips",
+  //     link: "/unit3-practice"
+  //   },
+  //   {
+  //     icon: "🔄",
+  //     title: "Flashcards",
+  //     description: "Spaced repetition learning with favorites and progress tracking",
+  //     link: "/unit3-flashcards"
+  //   },
+  //   {
+  //     icon: "🎪",
+  //     title: "Key Skills Hub",
+  //     description: "Interactive activities covering all essential VCE HHD skills",
+  //     link: "/keyskillshub"
+  //   },
+  //   {
+  //     icon: "📝",
+  //     title: "SAC 2 Prep",
+  //     description: "Advanced preparation tools with annotation and mapping features",
+  //     link: "/unit3-sac2-prep"
+  //   }
+  // ];
 
-  const quickStats = [
-    { number: "80+", label: "Glossary Terms", icon: "📖" },
-    { number: "24", label: "Practice Questions", icon: "❓" },
-    { number: "10", label: "Quiz Questions", icon: "🧠" },
-    { number: "12", label: "Flashcards", icon: "🔄" }
-  ];
+  // const quickStats = [ // Unused
+  //   { number: "80+", label: "Glossary Terms", icon: "📖" },
+  //   { number: "24", label: "Practice Questions", icon: "❓" },
+  //   { number: "10", label: "Quiz Questions", icon: "🧠" },
+  //   { number: "12", label: "Flashcards", icon: "🔄" }
+  // ];
 
   return (
     <section className="content-section text-center">

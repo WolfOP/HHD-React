@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 
 const quizQuestions = [
   {
@@ -142,7 +142,7 @@ export default function QuizComponent() {
     setShowExplanations(false);
   };
 
-  const correctAnswers = filteredQuestions.filter((q, i) => selected[i] === q.answer).length;
+  // const correctAnswers = filteredQuestions.filter((q, i) => selected[i] === q.answer).length; // Unused
   const totalAnswered = selected.filter(answer => answer !== null).length;
 
   return (
@@ -223,7 +223,7 @@ export default function QuizComponent() {
       <form className="space-y-6" onSubmit={handleSubmit}>
         {filteredQuestions.map((q, i) => {
           const isFavorite = favorites.includes(q.id);
-          const isAnswered = selected[i] !== null;
+          // const isAnswered = selected[i] !== null; // Unused
           const isCorrect = showExplanations && selected[i] === q.answer;
           const isIncorrect = showExplanations && selected[i] !== null && selected[i] !== q.answer;
 

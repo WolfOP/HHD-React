@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 export default function AssessmentPrepComponent() {
-  const [searchTerm, setSearchTerm] = useState("");
-  const [selectedFilter, setSelectedFilter] = useState("all");
+  const [, setSearchTerm] = useState("");
+  const [, setSelectedFilter] = useState("all");
   const [completedSections, setCompletedSections] = useState(() => {
     const saved = localStorage.getItem('assessment-prep-progress');
     return saved ? JSON.parse(saved) : {};
@@ -21,7 +21,7 @@ export default function AssessmentPrepComponent() {
     localStorage.setItem('assessment-prep-favorites', JSON.stringify(favorites));
   }, [favorites]);
 
-  const assessmentSections = [
+  const assessmentSections = [ // This variable is used later in the return statement indirectly via progressPercentage calculation
     {
       id: "overview",
       title: "Assessment Overview",
@@ -139,38 +139,38 @@ export default function AssessmentPrepComponent() {
     }
   ];
 
-  const filteredSections = assessmentSections.filter(section => {
-    const matchesSearch = section.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         section.description.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesFilter = selectedFilter === "all" || section.category === selectedFilter;
-    return matchesSearch && matchesFilter;
-  });
+  // const filteredSections = assessmentSections.filter(section => {
+  //   const matchesSearch = section.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+  //                        section.description.toLowerCase().includes(searchTerm.toLowerCase());
+  //   const matchesFilter = selectedFilter === "all" || section.category === selectedFilter;
+  //   return matchesSearch && matchesFilter;
+  // });
 
-  const toggleFavorite = (sectionId) => {
-    setFavorites(prev => 
-      prev.includes(sectionId) 
-        ? prev.filter(id => id !== sectionId)
-        : [...prev, sectionId]
-    );
-  };
+  // const toggleFavorite = (sectionId) => {
+  //   setFavorites(prev =>
+  //     prev.includes(sectionId)
+  //       ? prev.filter(id => id !== sectionId)
+  //       : [...prev, sectionId]
+  //   );
+  // };
 
-  const toggleCompleted = (sectionId) => {
-    setCompletedSections(prev => ({
-      ...prev,
-      [sectionId]: !prev[sectionId]
-    }));
-  };
+  // const toggleCompleted = (sectionId) => {
+  //   setCompletedSections(prev => ({
+  //     ...prev,
+  //     [sectionId]: !prev[sectionId]
+  //   }));
+  // };
 
-  const getDifficultyColor = (difficulty) => {
-    switch(difficulty) {
-      case 'beginner': return 'bg-green-100 text-green-800 border-green-200';
-      case 'intermediate': return 'bg-yellow-100 text-yellow-800 border-yellow-200';
-      case 'advanced': return 'bg-red-100 text-red-800 border-red-200';
-      default: return 'bg-gray-100 text-gray-800 border-gray-200';
-    }
-  };
+  // const getDifficultyColor = (difficulty) => {
+  //   switch(difficulty) {
+  //     case 'beginner': return 'bg-green-100 text-green-800 border-green-200';
+  //     case 'intermediate': return 'bg-yellow-100 text-yellow-800 border-yellow-200';
+  //     case 'advanced': return 'bg-red-100 text-red-800 border-red-200';
+  //     default: return 'bg-gray-100 text-gray-800 border-gray-200';
+  //   }
+  // };
 
-  const progressPercentage = Math.round((Object.values(completedSections).filter(Boolean).length / assessmentSections.length) * 100);
+  // const progressPercentage = Math.round((Object.values(completedSections).filter(Boolean).length / assessmentSections.length) * 100);
 
   return (
     <section className="content-section">

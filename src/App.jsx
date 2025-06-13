@@ -103,7 +103,7 @@ function App() {
 
       <div className="font-sans antialiased min-h-screen bg-gradient-to-b from-outer to-surface text-gray-100">
 
-        <header className="bg-surface/70 backdrop-blur border-b border-purple-700/40 shadow-lg sticky top-0 z-50">
+        <header className="bg-surface/70 backdrop-blur border-b border-slate-600/40 shadow-lg sticky top-0 z-50">
 
           <nav className="w-full px-6 md:px-8 py-4 flex items-center justify-between space-x-6">
             <Link to="/" className="text-2xl font-bold text-purple-400 hover:text-purple-300 transition-colors">HHD Hub</Link>
@@ -136,7 +136,7 @@ function App() {
                 className="md:hidden text-slate-600 dark:text-slate-300 hover:text-purple-600 dark:hover:text-purple-300 transition-colors"
                 aria-label="Toggle mobile menu"
                 aria-expanded={mobileMenuOpen}
-                aria-controls="mobile-menu"
+                aria-controls="sidebar-container"
               >
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   {mobileMenuOpen ? (
@@ -157,41 +157,66 @@ function App() {
 
             </ul>
           </nav>
-          
-          {mobileMenuOpen && (
-            <>
-              <div
-                className="fixed inset-0 bg-black/30 md:hidden"
-                onClick={() => setMobileMenuOpen(false)}
-                aria-hidden="true"
-              />
-              <div
-                id="mobile-menu"
-                className="md:hidden fixed top-16 inset-x-0 bg-surface/90 backdrop-blur z-50"
-              >
-              <ul className="flex flex-col items-center py-2 space-y-2">
-                <li>
-                  <button
-                    onClick={() => setDarkMode(!darkMode)}
-
-                    className="text-slate-200 hover:text-purple-400 transition-colors"
-
-                  >
-                    {darkMode ? '☀️ Light Mode' : '🌙 Dark Mode'}
-                  </button>
-                </li>
-
-                <li><Link to="/" onClick={() => setMobileMenuOpen(false)} className="nav-link transition-colors hover:text-purple-600">Home</Link></li>
-                <li><Link to="/unit3" onClick={() => setMobileMenuOpen(false)} className="nav-link transition-colors hover:text-purple-600">Unit 3</Link></li>
-                <li><Link to="/unit4" onClick={() => setMobileMenuOpen(false)} className="nav-link transition-colors hover:text-purple-600">Unit 4</Link></li>
-                <li><Link to="/assessment-prep" onClick={() => setMobileMenuOpen(false)} className="nav-link transition-colors hover:text-purple-600">Assessment Prep</Link></li>
-                <li><Link to="/glossary" onClick={() => setMobileMenuOpen(false)} className="nav-link transition-colors hover:text-purple-600">Glossary</Link></li>
-
-              </ul>
-              </div>
-            </>
-          )}
         </header>
+
+        {/* Sidebar Overlay */}
+        {mobileMenuOpen && (
+          <div
+            className="fixed inset-0 bg-black/50 z-55 md:hidden" // md:hidden if sidebar is only for mobile
+            onClick={() => setMobileMenuOpen(false)}
+            aria-hidden="true"
+          />
+        )}
+
+        {/* Sidebar */}
+        <div
+          id="sidebar-container"
+          className={`fixed top-0 left-0 h-screen w-64 bg-outer text-slate-100 p-5 z-60 transform transition-transform duration-300 ease-in-out shadow-xl
+                     ${mobileMenuOpen ? 'translate-x-0' : '-translate-x-full'}`}
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="sidebar-title"
+        >
+          <div className="flex justify-between items-center mb-6">
+            <h2 id="sidebar-title" className="text-xl font-semibold text-purple-400">Menu</h2>
+            <button
+              onClick={() => setMobileMenuOpen(false)}
+              className="text-slate-300 hover:text-purple-400 transition-colors"
+              aria-label="Close menu"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+
+          <nav>
+            <ul className="space-y-3">
+              <li><Link to="/" onClick={() => setMobileMenuOpen(false)} className="block py-2 px-3 rounded-md hover:bg-purple-700/50 transition-colors w-full text-left nav-link">Home</Link></li>
+              <li><Link to="/unit3" onClick={() => setMobileMenuOpen(false)} className="block py-2 px-3 rounded-md hover:bg-purple-700/50 transition-colors w-full text-left nav-link">Unit 3</Link></li>
+              <li><Link to="/unit4" onClick={() => setMobileMenuOpen(false)} className="block py-2 px-3 rounded-md hover:bg-purple-700/50 transition-colors w-full text-left nav-link">Unit 4</Link></li>
+              <li><Link to="/assessment-prep" onClick={() => setMobileMenuOpen(false)} className="block py-2 px-3 rounded-md hover:bg-purple-700/50 transition-colors w-full text-left nav-link">Assessment Prep</Link></li>
+              <li><Link to="/glossary" onClick={() => setMobileMenuOpen(false)} className="block py-2 px-3 rounded-md hover:bg-purple-700/50 transition-colors w-full text-left nav-link">Glossary</Link></li>
+            </ul>
+          </nav>
+
+          <div className="mt-8 pt-4 border-t border-slate-700">
+            <button
+              onClick={() => {
+                setDarkMode(!darkMode);
+                // setMobileMenuOpen(false); // Optionally close menu on toggle
+              }}
+              className="flex items-center justify-between w-full py-2 px-3 rounded-md text-slate-300 hover:bg-purple-700/50 hover:text-purple-300 transition-colors"
+            >
+              <span>{darkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}</span>
+              {darkMode ? (
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+              ) : (
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+              )}
+            </button>
+          </div>
+        </div>
 
         <main id="app-content" className="w-full px-6 md:px-8 py-8 min-h-[calc(100vh-160px)]">
           <Routes>
@@ -212,7 +237,7 @@ function App() {
 
         <ScrollToTopButton />
 
-        <footer className="bg-surface/70 backdrop-blur border-t border-purple-700/40 text-slate-500 dark:text-slate-400 text-center p-6 shadow-top transition-colors">
+        <footer className="bg-surface/70 backdrop-blur border-t border-slate-600/40 text-slate-500 dark:text-slate-300 text-center p-6 shadow-top transition-colors">
 
 
           <p>&copy; {new Date().getFullYear()} VCE HHD Study Hub. All rights reserved.</p>

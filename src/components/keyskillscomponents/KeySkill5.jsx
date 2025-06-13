@@ -56,7 +56,7 @@ export default function KeySkill5() {
     return stored ? JSON.parse(stored) : caseStudies.map(() => '');
   });
   const [showExamples, setShowExamples] = useState(false);
-  const [selectedCase, setSelectedCase] = useState(null);
+  const [, setSelectedCase] = useState(null); // selectedCase state value is not used
   const [categoryFilter, setCategoryFilter] = useState('All Categories');
   const [difficultyFilter, setDifficultyFilter] = useState('All Levels');
   const [favorites, setFavorites] = useState(() => {
