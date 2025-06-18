@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from "react";
+import { Link } from "react-router-dom";
 
 export default function Unit3PracticeQuestionsComponent() {
   const [selectedCategory, setSelectedCategory] = useState('all');
@@ -496,8 +497,8 @@ export default function Unit3PracticeQuestionsComponent() {
       {/* Footer */}
       <div className="mt-6 text-center">
         <p className="text-slate-500 text-xs">
-          <em>Showing {filteredQuestions.length} of {practiceQuestions.length} questions. 
-          For more practice, try the <a href="/unit3-quiz" className="text-purple-400 hover:text-purple-300 transition-colors">Unit 3 Quiz</a> and <a href="/unit3-sac2-prep" className="text-purple-400 hover:text-purple-300 transition-colors">SAC 2 Prep</a> tools.</em>
+          <em>Showing {filteredQuestions.length} of {practiceQuestions.length} questions.
+          For more practice, try the <Link to="/unit3-quiz" className="text-purple-400 hover:text-purple-300 transition-colors">Unit 3 Quiz</Link> and <Link to="/unit3-sac2-prep" className="text-purple-400 hover:text-purple-300 transition-colors">SAC 2 Prep</Link> tools.</em>
         </p>
       </div>
     </section>

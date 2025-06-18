@@ -508,7 +508,7 @@ export default function Unit3SAC2PrepComponent() {
   const progressPercentage = Math.round((Object.values(completedQuestions).filter(Boolean).length / practiceQuestions.length) * 100);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-purple-50 dark:from-slate-900 dark:to-slate-800">
+    <div id="unit3-sac2-prep" className="min-h-screen bg-gradient-to-br from-slate-50 to-purple-50 dark:from-slate-900 dark:to-slate-800">
       {/* Header Section */}
       <div className="relative overflow-hidden bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 text-white">
         <div className="absolute inset-0 bg-black/20"></div>

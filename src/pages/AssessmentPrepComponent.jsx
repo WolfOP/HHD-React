@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 export default function AssessmentPrepComponent() {
   // const [, setSearchTerm] = useState(""); // Unused
@@ -216,19 +217,38 @@ export default function AssessmentPrepComponent() {
         SAC tasks are school-based and must be part of your regular teaching program, completed mainly in class within a limited timeframe. Work submitted must be your own.
       </p>
 
-      <div className="my-6 p-4 bg-slate-700 rounded-lg shadow">
+      <div id="unit3-sac2-prep" className="my-6 p-4 bg-slate-700 rounded-lg shadow">
         <h3 className="text-xl font-semibold text-purple-300 mb-2">Unit 3 SAC 2 - Interactive Preparation Tools</h3>
         <p className="text-slate-300 mb-3">
           Access interactive tools for deconstructing questions, annotating stimuli, mapping relationships, and planning your extended responses for the Unit 3 Outcome 2 SAC.
         </p>
-        <a href="#unit3-sac2-prep" className="button-style">Go to Unit 3 SAC 2 Prep</a>
-        <a
-          href="#keyskillshub"
+        <Link
+          to="#unit3-sac2-prep"
+          onClick={(e) => {
+            if (window.location.pathname === '/assessment-prep') {
+              e.preventDefault();
+              document.getElementById('unit3-sac2-prep')?.scrollIntoView({ behavior: 'smooth' });
+            }
+          }}
+          className="button-style"
+        >
+          Go to Unit 3 SAC 2 Prep
+        </Link>
+        <Link
+          to="#keyskillshub"
+          onClick={(e) => {
+            if (window.location.pathname === '/assessment-prep') {
+              e.preventDefault();
+              document.getElementById('keyskillshub')?.scrollIntoView({ behavior: 'smooth' });
+            }
+          }}
           className="mt-4 inline-block px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white font-semibold rounded-xl shadow-md transition"
         >
           🛠️ Go to Key Skills Hub
-        </a>
+        </Link>
       </div>
+
+      <div id="keyskillshub"></div>
 
       <h4>Suitable SAC Tasks for Unit 3:</h4>
       <p>
