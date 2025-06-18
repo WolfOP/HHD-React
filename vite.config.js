@@ -8,4 +8,11 @@ export default defineConfig({
   plugins: [react(),
          tailwindcss(),
   ],
+  build: {
+    minify: 'terser',
+    terserOptions: {
+      compress: true,
+      mangle: true,
+    },
+  },
 })
