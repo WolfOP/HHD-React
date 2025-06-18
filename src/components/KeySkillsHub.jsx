@@ -197,7 +197,7 @@ export default function KeySkillsHub() {
 	if (selectedSkill) {
 		const SkillComponent = selectedSkill.component;
                 return (
-                        <div className="w-full px-4">
+                <section className="content-section w-full px-4">
 				<div className="mb-6 flex items-center gap-4">
 					<button
 						onClick={() => setSelectedSkill(null)}
@@ -212,15 +212,15 @@ export default function KeySkillsHub() {
 						<p className="text-slate-400 text-sm">{selectedSkill.description}</p>
 					</div>
 				</div>
-				<SkillComponent />
-			</div>
+                                <SkillComponent />
+                        </section>
 		);
 	}
 
         return (
-                <div id="keyskillshub" className="w-full px-4">
+                <section id="keyskillshub" className="content-section w-full px-4">
 			{/* Header */}
-			<div className="mb-8">
+                        <div className="mb-8">
 				<h1 className="text-3xl font-bold text-purple-400 mb-2">🎪 Key Skills Hub</h1>
 				<p className="text-slate-400 max-w-3xl">
 					Master essential VCE HHD skills through interactive activities. Each skill builds your understanding
@@ -454,6 +454,6 @@ export default function KeySkillsHub() {
 					</div>
 				</div>
 			</div>
-		</div>
-	);
+                </section>
+        );
 }

@@ -278,7 +278,7 @@ export default function Unit4Component() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Overview Tab */}
         {activeTab === "overview" && (
-          <div className="space-y-8">
+          <section className="content-section space-y-8">
             {/* Unit Introduction */}
             <div className="bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-gray-200 dark:border-slate-700 p-6">
               <div className="flex items-start gap-4">
@@ -323,12 +323,12 @@ export default function Unit4Component() {
                 </div>
               ))}
             </div>
-          </div>
+          </section>
         )}
 
         {/* Topics Tab */}
         {activeTab === "topics" && (
-          <div className="space-y-6">
+          <section className="content-section space-y-6">
             {/* Search and Filter Bar */}
             <div className="bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-gray-200 dark:border-slate-700 p-6">
               <div className="flex flex-col sm:flex-row gap-4 items-center justify-between">
@@ -480,7 +480,7 @@ export default function Unit4Component() {
                 </button>
               </div>
             )}
-          </div>
+          </section>
         )}
       </div>
     </div>
