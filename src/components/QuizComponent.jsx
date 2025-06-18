@@ -150,7 +150,7 @@ export default function QuizComponent() {
       {/* Header */}
       <div className="mb-6">
         <h2 className="text-3xl font-bold text-purple-400 mb-2">Unit 3 Self-Check Quiz</h2>
-        <p className="text-slate-400 max-w-2xl">
+        <p className="text-slate-300 max-w-2xl">
           Test your understanding of key VCE HHD concepts. Filter by category and favorite challenging questions for review.
         </p>
       </div>
@@ -196,13 +196,13 @@ export default function QuizComponent() {
           </div>
 
           {totalAnswered > 0 && (
-            <div className="text-xs text-slate-400">
+            <div className="text-xs text-slate-300">
               Progress: {totalAnswered}/{filteredQuestions.length} answered
             </div>
           )}
 
           <button
-            className="p-1 rounded-full bg-slate-800 text-slate-400 hover:text-purple-300 focus:outline-none focus:ring-2 focus:ring-purple-400"
+            className="p-3 w-12 h-12 rounded-full bg-slate-800 text-slate-300 hover:text-purple-200 focus:outline-none focus:ring-2 focus:ring-purple-400"
             aria-label="Quiz help"
             title="How to use the quiz"
             onClick={() =>
@@ -248,10 +248,10 @@ export default function QuizComponent() {
                 
                 <button
                   type="button"
-                  className={`p-1 rounded-full focus:outline-none focus:ring-2 focus:ring-yellow-400 transition-transform duration-150 ${
+                  className={`p-3 w-12 h-12 rounded-full focus:outline-none focus:ring-2 focus:ring-yellow-400 transition-transform duration-150 ${
                     isFavorite
                       ? "text-yellow-400 scale-110"
-                      : "text-slate-400 hover:text-yellow-400 hover:scale-110"
+                      : "text-slate-300 hover:text-yellow-400 hover:scale-110"
                   }`}
                   onClick={() => toggleFavorite(q.id)}
                   aria-label={isFavorite ? `Remove question ${q.id} from favorites` : `Add question ${q.id} to favorites`}
@@ -318,7 +318,7 @@ export default function QuizComponent() {
         })}
 
         {filteredQuestions.length === 0 && (
-          <div className="text-center py-12 text-slate-400">
+          <div className="text-center py-12 text-slate-300">
             <svg className="w-16 h-16 mx-auto mb-4 text-slate-500" fill="none" stroke="currentColor" strokeWidth="1" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M9.172 16.172a4 4 0 015.656 0M9 12h6m-6-4h6m2 5.291A7.962 7.962 0 0112 15c-2.34 0-4.488.901-6.077 2.378l-.096.074c-.487.365-.896.833-1.208 1.386C4.392 19.394 4.259 20 4.5 20.5S5.606 21 6.162 21h11.676c.556 0 1.054-.606.792-1.122a7.929 7.929 0 00-1.208-1.386l-.096-.074z" />
             </svg>
@@ -346,7 +346,7 @@ export default function QuizComponent() {
                 {score}/{filteredQuestions.length}
               </span>
             </div>
-            <p className="text-slate-400 mb-4">
+            <p className="text-slate-300 mb-4">
               {score >= filteredQuestions.length * 0.8 ? "Excellent work! 🎉" :
                score >= filteredQuestions.length * 0.6 ? "Good effort! Keep studying! 📚" :
                "Keep practicing! Review the explanations below. 💪"}
