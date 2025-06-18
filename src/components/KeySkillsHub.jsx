@@ -218,7 +218,7 @@ export default function KeySkillsHub() {
 	}
 
         return (
-                <div className="w-full px-4">
+                <div id="keyskillshub" className="w-full px-4">
 			{/* Header */}
 			<div className="mb-8">
 				<h1 className="text-3xl font-bold text-purple-400 mb-2">🎪 Key Skills Hub</h1>

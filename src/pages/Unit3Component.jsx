@@ -1,9 +1,10 @@
 import React from "react";
 import { Button } from "@mantine/core";
+import { Link } from "react-router-dom";
 
 export default function Unit3Component() {
   return (
-    <section className="content-section">
+    <section id="unit3" className="content-section">
       <h1 className="text-3xl font-bold mb-6">Unit 3: Australia's Health in a Globalised World</h1>
       <h2>Area of Study 1: Understanding Health and Wellbeing</h2>
       <p className="italic text-slate-400">This area of study focuses on understanding health and wellbeing, disease, and illness as complex, dynamic, and subjective concepts. Students reflect on the unique nature of health and wellbeing and illness, and explore how they are measured and experienced both individually and collectively.</p>
@@ -663,32 +664,32 @@ export default function Unit3Component() {
       <h2 className="mt-8">Interactive Tools & Practice</h2>
       <ul className="list-disc list-inside ml-4">
         <li>
-          <Button component="a" href="/keyskillshub" color="grape" size="sm" className="mb-2">
+          <Button component={Link} to="/keyskillshub" color="grape" size="sm" className="mb-2">
             Key Skills Hub
           </Button>{" "}
           – Practice data analysis, model comparisons, health promotion evaluation,
           and more.
         </li>
         <li>
-          <Button component="a" href="/unit3-sac2-prep" color="grape" size="sm" className="mb-2">
+          <Button component={Link} to="/unit3-sac2-prep" color="grape" size="sm" className="mb-2">
             Unit 3 SAC 2 Prep
           </Button>{" "}
           – Interactive mapping, annotation, and stimulus deconstruction tools.
         </li>
         <li>
-          <Button component="a" href="/unit3-quiz" color="grape" size="sm" className="mb-2">
+          <Button component={Link} to="/unit3-quiz" color="grape" size="sm" className="mb-2">
             Unit 3 Quiz
           </Button>{" "}
           – Test your knowledge with practice questions.
         </li>
         <li>
-          <Button component="a" href="/unit3-flashcards" color="grape" size="sm" className="mb-2">
+          <Button component={Link} to="/unit3-flashcards" color="grape" size="sm" className="mb-2">
             Glossary Flashcards
           </Button>{" "}
           – Revise key terms and definitions.
         </li>
         <li>
-          <Button component="a" href="/unit3-practice" color="grape" size="sm" className="mb-2">
+          <Button component={Link} to="/unit3-practice" color="grape" size="sm" className="mb-2">
             Practice Questions
           </Button>{" "}
           – Practice exam-style questions for Unit 3.

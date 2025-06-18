@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function HomeComponent() {
   // const features = [ // Unused
@@ -63,9 +64,9 @@ export default function HomeComponent() {
       <p className="mb-4">This website is designed to help you navigate the complexities of the VCE HHD curriculum, starting with Unit 3 and expanding to Unit 4.</p>
       <p>Explore key knowledge, practice skills, and prepare for your assessments with our curated content.</p>
       <div className="mt-10">
-        <a href="#unit3" className="button-style">
+        <Link to="/unit3" className="button-style">
           Explore Unit 3
-        </a>
+        </Link>
       </div>
     </section>
   );
