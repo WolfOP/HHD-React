@@ -365,12 +365,12 @@ export default function GlossaryComponent() {
 		return stored ? JSON.parse(stored) : [];
 	});
 	const [showOnlyFavorites, setShowOnlyFavorites] = useState(false);
-	const filteredTerms = useMemo(() => {
-		let terms = glossaryTerms.filter(
-			({ term, definition }) =>
-				term.toLowerCase().includes(search.toLowerCase()) ||
-				definition.toLowerCase().includes(search.toLowerCase())
-		);
+        const filteredTerms = useMemo(() => {
+                let terms = glossaryTerms.filter(
+                        ({ term, definition }) =>
+                                term.toLowerCase().includes(search.toLowerCase()) ||
+                                (definition || "").toLowerCase().includes(search.toLowerCase())
+                );
 		if (showOnlyFavorites) {
 			terms = terms.filter(({ term }) => favorites.includes(term));
 		}
