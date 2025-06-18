@@ -20,7 +20,7 @@ export default function App() {
     <Router>
       <div className="flex min-h-screen bg-gray-900 text-white">
         <Sidebar />
-        <main className="flex-1 p-4">
+        <main className="flex-1 px-4 lg:px-8 w-full max-w-screen-xl mx-auto">
           <Suspense fallback={<div>Loading...</div>}>
             <Routes>
               <Route path="/" element={<Home />} />
