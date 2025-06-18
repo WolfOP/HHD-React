@@ -24,7 +24,11 @@ export default function SearchBar() {
 
   return (
     <div className="relative w-full max-w-xs">
+      <label htmlFor="glossary-search" className="sr-only">
+        Search glossary
+      </label>
       <input
+        id="glossary-search"
         type="text"
         className="w-full border border-slate-300 dark:border-slate-700 rounded-md py-1 px-2 bg-white dark:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-purple-500 text-sm transition-colors"
         placeholder="Search glossary..."
