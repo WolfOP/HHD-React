@@ -3,11 +3,22 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" as="style" onload="this.rel='stylesheet'" />
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" /></noscript>
+    <link rel="preload" as="image" href="/src/assets/hhd-concept.png.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>VCE HHD Study Hub</title>
     <meta name="description" content="A comprehensive study resource for VCE Health and Human Development students, covering Unit 3 and Unit 4, including key knowledge, assessment preparation, and a glossary of terms.">
     <meta name="keywords" content="VCE, HHD, Health and Human Development, Unit 3, Unit 4, Study Guide, Australia Health, Global Health, SAC Prep, Exam Prep">
+
+    <style>
+      body { margin: 0; font-family: 'Inter', sans-serif; }
+      .skip-link { position: absolute; left: -999px; top: auto; }
+      .skip-link:focus { left: 0; background: #000; color: #fff; padding: 0.5rem; }
+    </style>
+
 
     <!-- Structured Data -->
     <script type="application/ld+json">
@@ -29,6 +40,7 @@
         ]
       }
     </script>
+
   </head>
   <body>
     <a href="#app-content" class="skip-link">Skip to main content</a>
