@@ -15,7 +15,7 @@ export default function Sidebar() {
         aria-label="Toggle sidebar"
         className="p-3 w-12 h-12 flex items-center justify-center focus:outline-none"
       >
-        🍔
+        ≡
       </button>
       {isOpen && (
         <nav className="flex flex-col space-y-4 p-4" aria-label="Primary">
