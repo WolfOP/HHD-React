@@ -143,7 +143,7 @@ ul:not(.flex-col) > li > .nav-link.active {
 .content-section h4 {
     font-size: 1.125rem; /* text-lg for mobile */
     font-weight: 600; /* semibold */
-    color: #cbd5e1; /* slate-300 */
+    color: #e2e8f0; /* slate-200 */
     margin-top: 1.25rem; /* mt-5 */
     margin-bottom: 0.5rem; /* mb-2 */
 }
@@ -156,7 +156,7 @@ ul:not(.flex-col) > li > .nav-link.active {
 .content-section p {
     line-height: 1.75; /* leading-relaxed */
     margin-bottom: 1rem; /* mb-4 */
-    color: #cbd5e1; /* slate-300 */
+    color: #e2e8f0; /* slate-200 */
     font-size: 0.95rem; /* Slightly smaller for mobile */
 }
 @media (min-width: 768px) {
@@ -169,7 +169,7 @@ ul:not(.flex-col) > li > .nav-link.active {
     list-style-type: disc;
     margin-left: 1.5rem; /* ml-6 */
     margin-bottom: 1rem; /* mb-4 */
-    color: #cbd5e1; /* slate-300 */
+    color: #e2e8f0; /* slate-200 */
 }
 
 .content-section li {

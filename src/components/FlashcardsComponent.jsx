@@ -50,7 +50,7 @@ export default function FlashcardsComponent() {
 
   return (
     <div className="p-4 bg-slate-800 rounded-lg shadow-md max-w-2xl mx-auto">
-      <h2 className="text-xl font-semibold mb-4 text-purple-300">Unit 3 Glossary Flashcards</h2>
+      <h2 className="text-xl font-semibold mb-4 text-purple-200">Unit 3 Glossary Flashcards</h2>
       <div className="text-2xl font-bold mb-2">{card.term}</div>
       {showDef && (
         <div className="mb-4">{card.definition}</div>
